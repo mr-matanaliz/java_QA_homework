@@ -1,0 +1,43 @@
+{
+  "Configuration": {
+    "Name": "Default",
+    "Appenders": {
+      "Console": {
+        "name": "Console",
+        "PatternLayout": {
+          "pattern": "%d [%t] %-5p %c - %m%n"
+        },
+        "target": "SYSTEM_OUT"
+      },
+      "RollingFile": {
+        "name": "File",
+        "PatternLayout": {
+          "pattern": "%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"
+        },
+        "fileName": "C:/logs/lesson_2.log",
+        "filePattern":"C:/logs/lesson_2-backup-%d{MM-dd-yy-HH-mm-ss}-%i.log.gz",
+        "Policies": {
+          "SizeBasedTriggeringPolicy": {
+            "size":"10 MB"
+          }
+        },
+        "DefaultRolloverStrategy": {
+          "max":"10"
+        }
+      }
+    },
+    "loggers": {
+      "root": {
+        "level": "debug",
+        "AppenderRef": [
+          {
+            "ref": "Console"
+          },
+          {
+            "ref": "File"
+          }
+        ]
+      }
+    }
+  }
+}
