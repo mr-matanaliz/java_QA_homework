@@ -1,4 +1,6 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -14,6 +16,8 @@ import java.util.Collection;
 
 @RunWith(Parameterized.class)
 public class Lesson2HomeworkTest {
+
+    private final static Logger logger = LogManager.getLogger(Lesson2HomeworkTest.class);
 
     private WebDriver driver;
 
@@ -55,8 +59,7 @@ public class Lesson2HomeworkTest {
     @Test
     public void test(){
         driver.get("https://otus.ru/");
-        Log log = new Log();
-        log.logMessages();
+        logger.info("ИНФО");
         Assert.assertEquals(driver.getTitle(), "Онлайн‑курсы для профессионалов, дистанционное обучение современным профессиям");
     }
 }
